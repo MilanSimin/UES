@@ -7,7 +7,7 @@ from flask import Flask, render_template, send_file, make_response, request
 app = Flask(__name__)
 
 import sqlite3
-conn=sqlite3.connect('../sensorsdata.db', check_same_thread = False)
+conn=sqlite3.connect('sensorsdata.db', check_same_thread = False)
 curs=conn.cursor()
 
 # Retrieve LAST data from database
