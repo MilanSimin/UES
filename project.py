@@ -55,23 +55,6 @@ def index():
 	return render_template('index.html', **templateData)
 
 
-@app.route('/', methods=['POST'])
-def my_form_post():
-    global numSamples
-    numSamples = int (request.form['numSamples'])
-    numMaxSamples = maxRowsTable()
-    if (numSamples > numMaxSamples):
-        numSamples = (numMaxSamples-1)
-
-    time, dist = getLastData()
-
-    templateData = {
-	'time'		: time,
-      	'dist'		: dist,
-      	'numSamples'	: numSamples
-	}
-    return render_template('index.html', **templateData)
-
 @app.route('/plot/distance')
 def plot_distance():
 	times, dist = getHistData(numSamples)
@@ -91,4 +74,5 @@ def plot_distance():
 	return response
 
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80, debug=False)
+	app.run(host='0.0.0.0', port=80, debug=False)
+
